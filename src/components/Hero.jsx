@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaTwitter } from "react-icons/fa";
 import {useNavigate } from "react-router-dom";
+import About from "./About";
 
 function Hero() {
     const [input,setInput] = useState('')
@@ -54,6 +55,7 @@ function Hero() {
             Go to Main page
         </button>
         </div>
+        <About/>
         </div>
     );
 }
