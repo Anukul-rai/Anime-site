@@ -14,7 +14,7 @@ function Footer() {
             </div>
             <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-12">
             {/* Help section */}
-            <div className=' flex flex-col ml-200 mt-2 p-3'>
+            <div className=' flex flex-col ml-80 mt-2 p-3'>
                 <h4 className="text-lg font-semibold mb-3">Help</h4>
                 <ul className="space-y-2 text-sm">
                     <li>

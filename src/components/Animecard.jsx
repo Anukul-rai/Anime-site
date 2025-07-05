@@ -1,37 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { fetchAnime } from './Api/Fetchanime';
+
 function Animecard() {
     const [anime, setAnime] = useState([]);
 
-    const fetchApi = async () => {
-        const res = await fetch("https://api.jikan.moe/v4/top/anime?type=ona");
-        const data = await res.json();
-        console.log(data.data);
-        setAnime(data.data);
-    };
-
     useEffect(() => {
-        fetchApi();
+        const loadAnime = async () => {
+        const animeData = await fetchAnime();
+        setAnime(animeData);
+        };
+
+        loadAnime();
     }, []);
 
     return (
         <div className="bg-black min-h-screen px-4 py-6">
-        <h1 className="text-3xl text-white font-bold mb-6 text-center ">Top Anime</h1>
-        <div className="flex flex-wrap justify-center gap-6">
+        <h1 className="text-3xl text-white font-bold mb-6 text-center">Top Anime</h1>
+
+        <div className="flex flex-wrap justify-center gap-4">
             {anime.map((item, i) => (
-            <div key={i} className="bg-[#1e1e1e] text-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 w-[200px] sm:w-[220px] md:w-[250px] flex-shrink-0">
-                <Link to={item.url}>
-                    <img src={item.images.jpg.image_url}
-                    alt={item.title_english}
-                    className="w-full h-64 object-cover"/>
-                </Link>
+            <div
+                key={i}
+                className="bg-[#1e1e1e] text-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 w-[200px] sm:w-[220px] md:w-[250px]"
+            >
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <img
+                    src={item.images.jpg.image_url}
+                    alt={item.title_english || item.title}
+                    className="w-full h-64 object-cover"
+                />
+                </a>
                 <div className="p-3 flex flex-col gap-1">
                 <h2 className="text-lg font-semibold truncate">{item.title_english || item.title}</h2>
                 <p className="text-sm text-gray-400">Episodes: {item.episodes || 'N/A'}</p>
                 <p className="text-sm text-gray-400">Status: {item.status}</p>
                 <p className="text-sm text-gray-400">Duration: {item.duration}</p>
                 <p className="text-sm text-gray-400">Rank: {item.rank}</p>
-                <p className="text-sm text-gray-400">Genre: {item.genres.name}</p>
                 </div>
             </div>
             ))}
