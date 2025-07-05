@@ -3,6 +3,7 @@ import { fetchAnime } from './Api/Fetchanime';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
 
 function Maincard() {
     const list = ['Action', 'Romance', 'Comedy', 'Adventure', 'Fantasy'];
@@ -19,7 +20,7 @@ function Maincard() {
     const sliderSettings = {
         dots: false,
         infinite: true,
-        speed: 400,
+        speed: 700,
         slidesToShow: 2,   // Adjust for screen size
         slidesToScroll: 1,
         responsive: [
@@ -41,25 +42,29 @@ function Maincard() {
     return (
         <div className="flex flex-row items-start justify-between bg-black gap-1 px-4 py-6">
         {/* Anime Card Slider */}
-        <div className="w-[75%]">
+        <div className="w-[75%] px-7">
             <Slider {...sliderSettings}>
             {display.map((item, i) => (
                 <div key={i} className="px-2">
-                <div className="bg-cyan-300 rounded-t-xl overflow-hidden">
+                <div className="bg-none rounded-t-xl overflow-hidden">
                     <img
                     src={item.trailer?.images?.small_image_url}
                     alt={item.title}
                     className=" object-cover"
                     />
                 </div>
-                <div className="bg-fuchsia-800 p-4 rounded-b-xl">
-                    <h1 className="text-black text-lg font-bold">
+                <div className="bg-fuchsia-800 p-4 rounded-b-xl flex flex-row justify-between">
+                    <div>
+                        <h1 className="text-black text-lg font-bold">
                     {item.title_english || item.title}
                     </h1>
                     <p className="text-xs text-white">Episodes: {item.episodes || 'N/A'}</p>
+                    </div>
+                    <Link to={item.url}>
                     <button className="bg-black text-white px-3 py-2 mt-2 rounded-full text-sm">
                     Watch now
                     </button>
+                    </Link>
                 </div>
                 </div>
             ))}
