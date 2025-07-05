@@ -1,21 +1,17 @@
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaTwitter } from "react-icons/fa";
-import { Navigate } from "react-router-dom";
-import Homepage from "../pages/Homepage";
-import Navbar from "./Navbar";
-import About from "./About";
-import Footer from "./Footer";
+import {useNavigate } from "react-router-dom";
 
 function Hero() {
     const [input,setInput] = useState('')
 
+    const navigate =useNavigate()
     const gotoHomepage =()=>{
-
+        navigate('/mainpage');
     }
     return (
         <div>
-            <Navbar/>
         <div className="flex flex-col items-center justify-center bg-black min-h-screen gap-6 text-white mt-[-70px]"> 
         
 
@@ -55,11 +51,9 @@ function Hero() {
         className="mt-2 bg-fuchsia-800 hover:bg-pink-700 text-white font-medium px-6 py-3 rounded-md transition-all"
         onClick={gotoHomepage}
         >
-            Go to home page
+            Go to Main page
         </button>
         </div>
-        <About/>
-        <Footer/>
         </div>
     );
 }

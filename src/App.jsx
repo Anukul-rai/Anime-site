@@ -1,23 +1,22 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Footer from './components/Footer'
 import { Route, Routes } from 'react-router-dom'
 import Homepage from './pages/Homepage'
-
+import Login from './components/Login'
+import Navbar from './components/Navbar'
+import Mainpg from './pages/Mainpg'
 function App() {
   return (
-    <div>
-      <Hero/>
-      <Routes>
-        <Route path='/home' element={<Homepage/>}/>
-        <Route path='/about' element={<About/>}/>
-        <Route path='/footer' element={<Footer/>}/>
-      </Routes>
+    <>
+    <Navbar/>
+    <Routes>
+      <Route path='/' element={<Homepage/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/mainpage' element={<Mainpg/>}/>
+      
+    </Routes>
       
       
       
-    </div>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import Searchbar from "./Searchbar";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,12 +21,15 @@ function Navbar() {
                 }}
             />
             </div>
-
+            <Link to='/'>
             <img src="/logo.png" alt="logo" className="h-12 w-auto" />
+            </Link>
+            <Searchbar/>
 
-            <button className="bg-fuchsia-800 text-white px-5 py-3 rounded-full hover:bg-pink-700 transition duration-300 font-light text-sm">
+            <Link to='/login'
+            className="bg-fuchsia-800 text-white px-5 py-3 rounded-full hover:bg-pink-700 transition duration-300 font-light text-sm">
             Sign In
-            </button>
+            </Link>
         </nav>
 
         {/* Dropdown Menu */}
