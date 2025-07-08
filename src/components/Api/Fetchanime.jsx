@@ -1,13 +1,13 @@
 export const fetchAnime = async () => {
     try {
-        const res = await fetch("https://api.jikan.moe/v4/top/anime?type=ona");
+        const res = await fetch("https://api.jikan.moe/v4/top/anime?type=ona")
         if (!res.ok) {
-        throw new Error(`API error: ${res.status}`);
+        throw new Error(`API error: ${res.status}`)
         }
-        const data = await res.json();
-        return data.data; // Return the anime array
+        const data = await res.json()
+        return data.data;
     } catch (error) {
-        console.error("Failed to fetch anime:", error);
-        return []; // Return an empty array to avoid crash
+        console.error("Failed to fetch anime:", error)
+        return [];
     }
 };
